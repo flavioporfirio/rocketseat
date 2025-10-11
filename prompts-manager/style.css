@@ -131,6 +131,8 @@ body {
   font-size: 16px;
   color: var(--white);
   outline: none;
+
+  line-height: 32px;
 }
 
 .editable-wrapper {
@@ -158,4 +160,91 @@ body {
 #content-wrapper.is-empty {
   font-size: 16px;
   color: var(--gray-200);
+  line-height: 32px;
+}
+
+.icon-button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.open-toggle {
+  position: absolute;
+  top: 62px;
+  left: 62px;
+
+  display: none;
+}
+
+.sidebar {
+  width: 400px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  padding: 32px;
+  background-color: var(--gray-800);
+  border-right: 0.5px solid var(--gray-700);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 24px;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  position: relative;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-700);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 22px;
+  transform: translateY(-50%);
+}
+
+.search-input {
+  background: transparent;
+
+  height: 44px;
+  width: 100%;
+  padding-left: 48px;
+
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  outline: none;
+
+  font-size: 16px;
+  color: var(--white);
+}
+
+.search-input::placeholder {
+  color: var(--gray-200);
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
 }

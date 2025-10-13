@@ -5,6 +5,7 @@
   --accent-500: #7878d7;
 
   --alert-600: #ff5c5c;
+  --alert-800: #ff5c5c14;
 
   --gray-900: #0d0d0d;
   --gray-800: #111111;
@@ -171,19 +172,24 @@ body {
 }
 
 .open-toggle {
-  position: absolute;
-  top: 62px;
-  left: 62px;
+  position: fixed;
+  top: 24px;
+  left: 24px;
 
-  display: none;
+  z-index: 0;
+  background: var(--gray-800);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .sidebar {
+  z-index: 1000;
   width: 400px;
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+  min-width: 0;
   gap: 50px;
 
   padding: 32px;
@@ -191,10 +197,21 @@ body {
   border-right: 0.5px solid var(--gray-700);
 }
 
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  transform: translateX(0);
+}
+
 .sidebar-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -207,12 +224,13 @@ body {
 }
 
 .search-container {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   gap: 20px;
 
   width: 100%;
-  position: relative;
 
   padding-bottom: 20px;
   border-bottom: 1px solid var(--gray-700);
@@ -247,4 +265,91 @@ body {
 .btn-full {
   width: 100%;
   justify-content: center;
+}
+
+.prompt-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.prompt-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.prompt-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prompt-item-description {
+  font-size: 14px;
+  color: var(--gray-100);
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: var(--alert-800);
+}
+
+.icon.icon-trash {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 950px) {
+  .open-toggle {
+    display: block;
+    top: 38px;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80%;
+    max-width: 360px;
+    transform: translateX(-100%);
+    z-index: 1100;
+  }
+
+  .main {
+    padding: 24px 32px;
+    margin-left: 0;
+    overflow-y: auto;
+  }
 }
